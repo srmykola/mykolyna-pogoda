@@ -46,9 +46,10 @@ def makeResponse(req):
     date = date[:10]
     for i in range(0, 30):
         if date in weather[i]['dt_txt']:
-            condition = weather[i]['weather'][0]['description'] + weather[i]['main']
+            condition = weather[i]['weather'][0]['description']
+            temp =  str(weather[i]['main']['temp'])
             break
-    speech = "The forecast for " + city + " for " + date + " is " + condition
+    speech = "The forecast for " + city + " for " + date + " is " + condition + temp
     return {
         "fulfillmentText": speech,
         "displayText": speech,
