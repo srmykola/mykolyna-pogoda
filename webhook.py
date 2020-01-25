@@ -45,11 +45,11 @@ def makeResponse(req):
     # weather = json_object['list']
     # date = date.strftime('%Y-%m-%d')
     condition = 'default condition'
-    date = date[:9]
-    # for i in range(0, 30):
-    #     if date in weather[i]['dt_txt']:
-    #         condition = weather[i]['weather'][0]['description']
-    #         break
+    date = date[:10]
+    for i in range(0, 30):
+        if date in weather[i]['dt_txt']:
+            condition = weather[i]['weather'][0]['description']
+            break
     speech = "The forecast for " + city + " for " + date + " is " + condition
     return {
         "fulfillmentText": speech,
