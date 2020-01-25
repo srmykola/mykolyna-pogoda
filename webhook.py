@@ -6,6 +6,9 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+from datetime import datetime
+
+
 # Flask app should start in global layout
 app = Flask(__name__)
 
@@ -41,7 +44,7 @@ def makeResponse(req):
     json_object = r.json()
     weather = json_object['list']
     date = date.strftime('%Y-%m-%d')
-    
+
     for i in range(0, 30):
         if date in weather[i]['dt_txt']:
             condition = weather[i]['weather'][0]['description']
