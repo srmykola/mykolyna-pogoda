@@ -30,21 +30,21 @@ def makeResponse(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
-    # date = parameters.get("date")
+    date = parameters.get("date")
     # if city is None:
     #     return None
-    date = 'default_date'
+    # date = 'default_date'
     # city = 'default_city'
-    condition = 'default_condition'
-    # r = requests.get(
-    #     'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=2160ae9f1b52eb8e94ff08940fccac75')
-    # json_object = r.json()
-    # weather = json_object['list']
-    #
-    # for i in range(0, 30):
-    #     if date in weather[i]['dt_txt']:
-    #         condition = weather[i]['weather'][0]['description']
-    #         break
+    # condition = 'default_condition'
+    r = requests.get(
+        'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=2160ae9f1b52eb8e94ff08940fccac75')
+    json_object = r.json()
+    weather = json_object['list']
+
+    for i in range(0, 30):
+        if date in weather[i]['dt_txt']:
+            condition = weather[i]['weather'][0]['description']
+            break
     speech = "The forecast for" + city + "for " + date + " is " + condition
     return {
         "fulfillmentText": speech,
