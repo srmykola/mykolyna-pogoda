@@ -39,16 +39,16 @@ def makeResponse(req):
     # date = 'default_date'
     # city = 'default_city'
     # condition = 'default_condition'
-    r = requests.get(
-        'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=2160ae9f1b52eb8e94ff08940fccac75')
-    json_object = r.json()
-    weather = json_object['list']
+    # r = requests.get(
+    #     'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=2160ae9f1b52eb8e94ff08940fccac75')
+    # json_object = r.json()
+    # weather = json_object['list']
     date = date.strftime('%Y-%m-%d')
 
-    for i in range(0, 30):
-        if date in weather[i]['dt_txt']:
-            condition = weather[i]['weather'][0]['description']
-            break
+    # for i in range(0, 30):
+    #     if date in weather[i]['dt_txt']:
+    #         condition = weather[i]['weather'][0]['description']
+    #         break
     speech = "The forecast for" + city + "for " + date + " is " + condition
     return {
         "fulfillmentText": speech,
