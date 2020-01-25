@@ -34,6 +34,7 @@ def makeResponse(req):
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
+
     # if city is None:
     #     return None
 
@@ -42,11 +43,10 @@ def makeResponse(req):
     json_object = r.json()
     weather = json_object['list']
 
-    condition = 'default condition'
     date = date[:10]
     for i in range(0, 30):
         if date in weather[i]['dt_txt']:
-            condition = weather[i]['weather'][0]['description']
+            condition = weather[i]['weather'][0]['description'] + weather[i]['main'][0]['temp']
             break
     speech = "The forecast for " + city + " for " + date + " is " + condition
     return {
