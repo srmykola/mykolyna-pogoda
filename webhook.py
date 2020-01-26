@@ -50,7 +50,7 @@ def makeResponse(req):
             temp =  str(round(weather[i]['main']['temp'] - 273.15))  + ' C'
             wind_speed = str(round(weather[i]['wind']['speed'])) + ' meter/sec'
             break
-    speech = "The forecast for " + city + " for " + date + ": " + '\n'  + condition + ', ' + '\n'  + 'temperature: ' + temp + ', ' + '\n' + 'wind speed ' + wind_speed
+    speech = "The forecast for " + city + " for " + date + ": " + '\n'  + condition + ', ' + '\n'  + 'temperature: ' + temp + ', ' + '\n' + 'wind speed: ' + wind_speed
     return {
         "fulfillmentText": speech,
         "displayText": speech,
